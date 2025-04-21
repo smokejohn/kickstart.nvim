@@ -83,7 +83,8 @@ vim.opt.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Open [D]iagnostic in [F]loating window' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -146,7 +147,7 @@ require('lazy').setup({
     'danymat/neogen',
     config = function()
       require('neogen').setup {
-        vim.keymap.set('n', '<Leader>d', '<cmd>Neogen<CR>', { desc = 'Generate [D]ocumentation' }),
+        vim.keymap.set('n', '<Leader>md', '<cmd>Neogen<CR>', { desc = 'Generate [D]ocumentation' }),
       }
     end,
   },
@@ -245,8 +246,10 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
+        { '<leader>d', group = '[D]iagnostics' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>m', group = '[M]isc' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
