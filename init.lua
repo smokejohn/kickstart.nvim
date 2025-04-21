@@ -250,7 +250,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>m', group = '[M]isc' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -421,6 +421,24 @@ require('lazy').setup({
       --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
+
+      -- Adds rounded border to floating preview window
+      local border = {
+        { '╭', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╮', 'FloatBorder' },
+        { '│', 'FloatBorder' },
+        { '╯', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╰', 'FloatBorder' },
+        { '│', 'FloatBorder' },
+      }
+      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or border
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      end
 
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
