@@ -182,8 +182,6 @@ require('lazy').setup({
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = '[G]it [B]lame' })
-
       require('gitsigns').setup {
         signs = {
           add = { text = '+' },
@@ -196,6 +194,10 @@ require('lazy').setup({
           border = 'rounded',
         },
       }
+      vim.keymap.set('n', '<leader>ghp', '<cmd>Gitsigns preview_hunk<CR>', { desc = '[G]it [H]unk [P]review' })
+      vim.keymap.set('n', '<leader>ghr', '<cmd>Gitsigns reset_hunk<CR>', { desc = '[G]it [H]unk [R]eset' })
+      vim.keymap.set('n', '<leader>ghq', '<cmd>Gitsigns setqflist<CR>', { desc = '[G]it [H]unks to [Q]uickfix list' })
+      vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = '[G]it [B]lame' })
     end,
   },
 
@@ -264,6 +266,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>m', group = '[M]isc' },
         { '<leader>g', group = '[G]it' },
+        { '<leader>gh', group = '[H]unk' },
       },
     },
   },
