@@ -202,6 +202,9 @@ require('lazy').setup({
         gitsigns.setqflist('all')
       end, { desc = 'All [G]it [H]unks to [Q]uickfix list' })
       vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = '[G]it [B]lame' })
+      vim.keymap.set('n', '<leader>gB', function()
+        gitsigns.blame_line({ full = true })
+      end, { desc = '[G]it [B]lame (whole commit message)' })
       vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle current line [B]lame' })
     end,
   },
