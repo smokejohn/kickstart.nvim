@@ -147,20 +147,24 @@ require('lazy').setup({
       })
     end,
   },
-  { -- colorscheme
-    "webhooked/kanso.nvim",
-  },
-  { -- colorscheme
-    "rebelot/kanagawa.nvim",
-  },
-  { -- colorscheme
-    'folke/tokyonight.nvim',
-    lazy = false,
+  -- colorschemes
+  { 'webhooked/kanso.nvim' },
+  { 'rebelot/kanagawa.nvim' },
+  { 'savq/melange-nvim' },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
-    config = function ()
-      vim.cmd.colorscheme('tokyonight-night')
-    end
+    config = function()
+      require('catppuccin').setup({
+        integrations = {
+          blink_cmp = true,
+        },
+      })
+      vim.cmd.colorscheme('catppuccin-macchiato')
+    end,
   },
+  { 'folke/tokyonight.nvim' },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -684,7 +688,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, lua = true, python = true}
+        local disable_filetypes = { c = true, cpp = true, lua = true, python = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
