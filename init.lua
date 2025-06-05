@@ -149,17 +149,17 @@ require('lazy').setup({
   },
   { -- colorscheme
     "webhooked/kanso.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function ()
-      vim.cmd.colorscheme('kanso-ink')
-    end
   },
   { -- colorscheme
     "rebelot/kanagawa.nvim",
   },
   { -- colorscheme
     'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function ()
+      vim.cmd.colorscheme('tokyonight-night')
+    end
   },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
