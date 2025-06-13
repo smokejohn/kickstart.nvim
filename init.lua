@@ -139,14 +139,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  { -- docstrings for multiple languages
-    'danymat/neogen',
-    config = function()
-      require('neogen').setup({
-        vim.keymap.set('n', '<leader>md', '<cmd>Neogen<CR>', { desc = 'Generate [D]ocumentation' }),
-      })
-    end,
-  },
   -- colorschemes
   { 'webhooked/kanso.nvim' },
   { 'rebelot/kanagawa.nvim' },
@@ -164,7 +156,20 @@ require('lazy').setup({
       vim.cmd.colorscheme('catppuccin-macchiato')
     end,
   },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echanovski/mini.nvim' },
+    opts = {},
+  },
   { 'folke/tokyonight.nvim' },
+  { -- docstrings for multiple languages
+    'danymat/neogen',
+    config = function()
+      require('neogen').setup({
+        vim.keymap.set('n', '<leader>md', '<cmd>Neogen<CR>', { desc = 'Generate [D]ocumentation' }),
+      })
+    end,
+  },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     config = function()
