@@ -164,7 +164,12 @@ require('lazy').setup({
       vim.cmd.colorscheme('catppuccin-macchiato')
     end,
   },
-  {'NMAC427/guess-indent.nvim'}, -- Detect tabstop and shiftwidth automatically
+  {
+    'NMAC427/guess-indent.nvim',
+    config = function()
+      require('guess-indent').setup({})
+    end,
+  }, -- Detect tabstop and shiftwidth automatically
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echanovski/mini.nvim' },
@@ -936,6 +941,8 @@ require('lazy').setup({
     },
   },
 })
+
+require('custom.cpp_debugline').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
