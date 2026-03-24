@@ -171,24 +171,6 @@ require('lazy').setup({
     end,
   }, -- Detect tabstop and shiftwidth automatically
   {
-    'nvim-mini/mini.animate',
-    version = '*',
-    config = function()
-      require('mini.animate').setup({
-        cursor = {
-          timing = function(_, n)
-            return 125 / n
-          end,
-        },
-        scroll = {
-          timing = function(_, n)
-            return 125 / n
-          end,
-        },
-      })
-    end,
-  },
-  {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echanovski/mini.nvim' },
     opts = {},
