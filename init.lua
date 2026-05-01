@@ -530,7 +530,7 @@ require('lazy').setup({
           --  the definition of its *type*, not where it was *defined*.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-          map('<leader>ts', '<cmd>ClangdSwitchSourceHeader<CR>', '[T]oggle between [S]ource and Header')
+          map('<leader>ts', '<cmd>LspClangdSwitchSourceHeader<CR>', '[T]oggle between [S]ource and Header')
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -941,8 +941,5 @@ require('lazy').setup({
     },
   },
 })
-
-require('custom.cpp_debugline').setup()
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
